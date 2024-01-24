@@ -206,3 +206,49 @@ class ApartmentDataBase {
             }
         }
     }
+    public Owner InputOwnerFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите фамилию собственника: ");
+        String fio = scanner.nextLine();
+        System.out.print("Введите имя собственника: ");
+        String name = scanner.nextLine();
+        return new Owner(fio, name);
+    }
+    public Flat InputFlatFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите улицу: ");
+        String street = scanner.nextLine();
+        System.out.print("Введите номер квартиры: ");
+        int num_flat = scanner.nextInt();
+        System.out.print("Введите площадь квартиры (кв. м): ");
+        int square = scanner.nextInt();
+        System.out.print("Введите кол-во комнат: ");
+        int kol_rooms = scanner.nextInt();
+        return new Flat(street, num_flat, kol_rooms, square);
+    }
+    public Concierge InputConciergeFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите фамилию консьержа: ");
+        String concierge_fio = scanner.nextLine();
+        System.out.print("Введите имя консьержа: ");
+        String concierge_name = scanner.nextLine();
+        return new Concierge(concierge_fio, concierge_name);
+    }
+    public Doorway InputDoorwayFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите номер подъезда: ");
+        int num_doorway = scanner.nextInt();
+        System.out.print("Введите кол-во квартир в подъезде: ");
+        int kol_flat = scanner.nextInt();
+        return new Doorway(num_doorway, kol_flat);
+    }
+    public House InputHouseFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите улицу: ");
+        String street = scanner.nextLine();
+        System.out.print("Введите номер дома: ");
+        int num_house = scanner.nextInt();
+        System.out.print("Введите общее кол-во жильцов: ");
+        int kol_rezidents = scanner.nextInt();
+        return new House(street, num_house, kol_rezidents);
+    }
