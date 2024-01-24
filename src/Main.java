@@ -90,3 +90,36 @@ class House {
         return kol_rezidents;
     }
 }
+class ApartmentDataBase {
+    private ArrayList<Owner> owners = new ArrayList<>();
+    private ArrayList<Flat> flats = new ArrayList<>();
+    private ArrayList<Concierge> concierges = new ArrayList<>();
+    private ArrayList<Doorway> doorways = new ArrayList<>();
+    private ArrayList<House> houses = new ArrayList<>();
+    private static int totalApartments = 0;  // Статическое поле для отслеживания общего числа квартир
+    public void AddOwner(Owner owner) {
+        owners.add(owner);
+    }
+    // Дополнение к методу AddFlat
+    public void AddFlat(Flat flat) {
+        try {
+            // Добавление квартиры в список
+            flats.add(flat);
+            totalApartments++;
+        } catch (Exception e) {
+            System.err.println("Ошибка при добавлении квартиры: " + e.getMessage());
+        }
+    }
+
+    public static int getTotalApartments() {  // Статический метод для получения общего числа квартир
+        return totalApartments;
+    }
+    public void AddConcierge(Concierge concierge) {
+        concierges.add(concierge);
+    }
+    public void AddDoorway(Doorway doorway) {
+        doorways.add(doorway);
+    }
+    public void AddHouse(House house) {
+        houses.add(house);
+    }
