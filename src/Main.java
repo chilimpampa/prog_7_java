@@ -252,3 +252,11 @@ class ApartmentDataBase {
         int kol_rezidents = scanner.nextInt();
         return new House(street, num_house, kol_rezidents);
     }
+    public boolean IsInteger(String str) {
+        if (str == null || str.isEmpty()) return false;
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) return false;
+        }
+        return true;
+    }
+}
