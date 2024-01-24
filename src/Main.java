@@ -123,3 +123,86 @@ class ApartmentDataBase {
     public void AddHouse(House house) {
         houses.add(house);
     }
+    public void PrintOwnerList() {
+        if (owners.isEmpty()) {
+            System.out.println("          Данных о владельце нет...");
+        } else {
+            System.out.println("          Данные о владельце");
+            System.out.println("-----------------------------------------");
+            for (Owner owner : owners) {
+                System.out.println("Фамилия: " + owner.getFIO_OWNER());
+                System.out.println("Имя: " + owner.getNAME_OWNER());
+                System.out.println("-----------------------------------------");
+            }
+        }
+    }
+    public void PrintFlatList() {
+        if (flats.isEmpty()) {
+            System.out.println("          Данных о квартире нет...");
+        } else {
+            System.out.println("          Данные о квартире");
+            System.out.println("-----------------------------------------");
+            for (Flat flat : flats) {
+                System.out.println("Адрес квартиры: " + flat.getSTREET());
+                System.out.println("Номер квартиры: " + flat.getNUM_FLAT());
+                System.out.println("Кол-во комнат: " + flat.getKOL_ROOMS());
+                System.out.println("Площадь квартиры (кв. м): " + flat.getSQUARE());
+                System.out.println("-----------------------------------------");
+            }
+        }
+    }
+
+    // Дополнение к методу PrintFlatList
+    public void PrintSortedFlatList() {
+        ArrayList<Flat> sortedFlats = new ArrayList<>(flats);  // Создание копии списка квартир
+        Collections.sort(sortedFlats, Comparator.comparingInt(Flat::getSQUARE));  // Сортировка по площади квартиры
+        // Вывод отсортированного списка квартир
+        for (Flat flat : sortedFlats) {
+            System.out.println("Адрес квартиры: " + flat.getSTREET());
+            System.out.println("Номер квартиры: " + flat.getNUM_FLAT());
+            System.out.println("Кол-во комнат: " + flat.getKOL_ROOMS());
+            System.out.println("Площадь квартиры (кв. м): " + flat.getSQUARE());
+            System.out.println("-----------------------------------------");
+        }
+    }
+    public void PrintConciergeList() {
+        if (concierges.isEmpty()) {
+            System.out.println("          Данных о консьерже нет...");
+        } else {
+            System.out.println("          Данные о консьерже");
+            System.out.println("-----------------------------------------");
+            for (Concierge concierge : concierges) {
+                System.out.println("Фамилия консьержа: " + concierge.getFIO_CONCIERGE());
+                System.out.println("Имя консьержа: " + concierge.getNAME_CONCIERGE());
+                System.out.println("-----------------------------------------");
+            }
+        }
+    }
+    public void PrintDoorwayList() {
+        if (doorways.isEmpty()) {
+            System.out.println("          Данных о подъезде нет...");
+        } else {
+            System.out.println("          Данные о подъезде");
+            System.out.println("-----------------------------------------");
+            for (Doorway doorway : doorways) {
+                System.out.println("Номер подъезда: " + doorway.getNUM_DOORWAY());
+                System.out.println("Кол-во квартир: " + doorway.getKOl_FLAT());
+                System.out.println("-----------------------------------------");
+            }
+        }
+    }
+    public void PrintHouseList() {
+        if (houses.isEmpty()) {
+            System.out.println("          Данных о доме нет...");
+        } else {
+            System.out.println("-----------------------------------------");
+            System.out.println("          Данные о доме");
+            System.out.println("-----------------------------------------");
+            for (House house : houses) {
+                System.out.println("Название улицы: " + house.getSTREET());
+                System.out.println("Номер дома: " + house.getNUM_HOUSE());
+                System.out.println("Кол-во жильцов: " + house.getKOL_REZIDENTS());
+                System.out.println("-----------------------------------------");
+            }
+        }
+    }
