@@ -260,3 +260,52 @@ class ApartmentDataBase {
         return true;
     }
 }
+public class Main {
+    public static void main(String[] args) {
+        ApartmentDataBase apartmentDB = new ApartmentDataBase();
+        System.out.println("Ввод дома");
+        House house = apartmentDB.InputHouseFromUser();
+        System.out.println("Ввод подъезда");
+        Doorway doorway = apartmentDB.InputDoorwayFromUser();
+        System.out.println("Ввод консьержа");
+        Concierge concierge = apartmentDB.InputConciergeFromUser();
+        System.out.println("Ввод квартиры");
+        Flat flat = apartmentDB.InputFlatFromUser();
+        System.out.println("Ввод владельца квартиры");
+        Owner owner = apartmentDB.InputOwnerFromUser();
+        apartmentDB.AddHouse(house);
+        apartmentDB.AddDoorway(doorway);
+        apartmentDB.AddConcierge(concierge);
+        apartmentDB.AddFlat(flat);
+        apartmentDB.AddOwner(owner);
+        apartmentDB.PrintHouseList();
+        apartmentDB.PrintDoorwayList();
+        apartmentDB.PrintConciergeList();
+        apartmentDB.PrintFlatList();
+        apartmentDB.PrintOwnerList();
+
+        //Статические методы
+        System.out.println("Общее количество владельцев: " + Owner.getTotalOwners());
+        System.out.println("Общее количество квартир: " + ApartmentDataBase.getTotalApartments());
+
+        try
+        {
+            // Добавление квартиры с ошибочными данными (например, отрицательной площадью)
+            apartmentDB.AddFlat(new Flat("Улица", 1, 2, -50));
+            // Обработка ошибок ввода данных
+            System.out.println("Введите данные для еще одной квартиры: ");
+            Flat newFlat = apartmentDB.InputFlatFromUser(); // Метод может сгенерировать исключение при некорректных данных
+            apartmentDB.AddFlat(newFlat);
+        } catch (Exception e)
+        {
+            System.err.println("Произошла ошибка: " + e.getMessage());
+        }
+        // Добавление квартир в базу данных
+        apartmentDB.AddFlat(new Flat("Улица 1", 1, 3, 70));
+        apartmentDB.AddFlat(new Flat("Улица 2", 2, 2, 50));
+        apartmentDB.AddFlat(new Flat("Улица 3", 3, 4, 90));
+        // Вывод отсортированного списка квартир по площади
+        System.out.println("Список квартир, отсортированный по площади:");
+        apartmentDB.PrintSortedFlatList();
+    }
+}
